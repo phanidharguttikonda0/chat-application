@@ -1,0 +1,15 @@
+.homeusername {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeusername div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+}
