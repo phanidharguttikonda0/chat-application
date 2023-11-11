@@ -18,7 +18,7 @@ function SignIn(props) {
         }
         let response = await axios.post("http://127.0.0.1:8080/Sign-In", form) ; // now we are going to check whether the details are correct or wrong
         console.log(response) ;
-        if(response.data === 'true') {
+        if(response.data === true) {
             usernamechange(username) ;
             navigate("/") ;
         }

@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .homeusername div {
@@ -13,3 +14,38 @@
 button {
     cursor: pointer;
 }
+
+.home {
+    background-color: #04012b;
+    height: 100vh;
+    color: aliceblue;
+}
+
+.homemain{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sideNav{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: 2%;
+    height: 90vh;
+    background-color: rgba(186, 155, 219, 0.242);
+    border-radius: 12px;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    min-height: 90vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    background-color: rgba(186, 155, 219, 0.242);
+    border-radius: 12px;
+}
+
