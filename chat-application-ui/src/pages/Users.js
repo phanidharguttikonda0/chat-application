@@ -15,9 +15,9 @@ function Users(props) { // here we will pass the list of users that the user cha
         <div className={css.users}>
             {
                 props.users.map((item,index) => <div key={index} className={css.user} onClick={()=>{
-                    userClicked(item)
+                    userClicked(item.username)
                 }}>
-                    {item}
+                    {item.username}
                     </div>)
             }
         </div>

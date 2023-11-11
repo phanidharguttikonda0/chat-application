@@ -1,11 +1,11 @@
 
 
 pub mod Services {
-    use sqlx::{PgConnection, PgPool, Pool, Postgres, query, Row};
+    use sqlx::{FromRow, PgConnection, PgPool, Pool, Postgres, query, Row};
     use sqlx::postgres::PgPoolOptions;
 
 
-    use serde::Deserialize;
+    use serde::{Deserialize, Serialize};
     use serde_json::json;
 
 
@@ -25,6 +25,11 @@ pub mod Services {
 
     struct database {
         connection: Pool<Postgres>
+    }
+
+    #[derive(Deserialize,Serialize, FromRow)]
+    pub struct Username {
+       pub username : String
     }
 
 
@@ -129,5 +134,21 @@ pub mod Services {
 
     }
 
+
+    pub async fn get_chats(username: String) -> Vec<Username> {
+
+        // create a connection
+        let con = database::new().await ;
+
+        let table_name = "chats_".to_owned()+&username ;
+        let query = format!("SELECT username FROM {}", table_name) ;
+
+        let usernames = sqlx::query_as::<_, Username>(&query)
+            .fetch_all(&con.connection)
+            .await.unwrap();
+
+        usernames
+
+    }
 
 }

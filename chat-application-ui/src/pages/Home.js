@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { usernameContext } from "../App";
+import { chatsContext, usernameContext } from "../App";
 import Chat from "./Chat";
 import SearchBar from "./SearchBar";
 import Users from "./Users";
@@ -13,8 +13,10 @@ function Home(props) {
   const username = useContext(usernameContext);
   const navigate = useNavigate();
   const [clickedUser, changeClickeduser] = useState(""); // this user chat will appear in the chat
+  const chats = useContext(chatsContext) ;
 
   useEffect(() => {}, [clickedUser]) ;
+
 
   return (
     <div className={css.home}>
@@ -46,7 +48,7 @@ function Home(props) {
             <div className={css.homemain}>
               <div className={css.sideNav}>
                 <SearchBar />
-                <Users users={array} />
+                <Users users={chats} />
               </div>
               <div className={css.chat}>
                 <Chat user={clickedUser}/>
@@ -61,23 +63,23 @@ function Home(props) {
 
 export default Home;
 
-var array = [ 
+// var array = [ 
 
-    "phani",
-    "adi",
-    "kohli",
-    "hardik",
-    "bhumhra",
-    "gill",
-    "ishan",
-    "dhoni",
-    "surya kumar",
-    "kuldeep",
-    "chahal",
-    "gill",
-    "ishan",
-    "dhoni",
-    "surya kumar",
-    "kuldeep",
-    "chahal"
- ] ;
+//     "phani",
+//     "adi",
+//     "kohli",
+//     "hardik",
+//     "bhumhra",
+//     "gill",
+//     "ishan",
+//     "dhoni",
+//     "surya kumar",
+//     "kuldeep",
+//     "chahal",
+//     "gill",
+//     "ishan",
+//     "dhoni",
+//     "surya kumar",
+//     "kuldeep",
+//     "chahal"
+//  ] ;

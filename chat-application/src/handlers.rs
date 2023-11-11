@@ -6,7 +6,7 @@ pub mod handlers {
     use actix_web::web::Json;
     use serde::Deserialize;
     use serde_json::json;
-    use crate::handlers::Services::Services::{sign_in_, sign_up_};
+    use crate::handlers::Services::Services::{sign_in_, sign_up_,get_chats};
 
 
     #[derive(Deserialize)]
@@ -21,6 +21,11 @@ pub mod handlers {
         mobile_number : String,
         username : String,
         password : String,
+    }
+
+    #[derive(Deserialize)]
+    pub struct Username {
+        username: String
     }
 
     pub async fn sign_up( data: Json<SignUp> ,req: HttpRequest) -> impl Responder {
@@ -42,5 +47,9 @@ pub mod handlers {
         ).await ;
         HttpResponse::Ok().body(val.to_string())
 
+    }
+
+    pub async fn get_chats_request(data: Json<Username>, req:HttpRequest) -> impl Responder {
+        HttpResponse::Ok().json(get_chats(String::from(&data.username)).await)
     }
 }
