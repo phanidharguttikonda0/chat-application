@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     if(username.length !== 0 ){
       async function main() {
-        console.log((await axios.post("http://127.0.0.1:8080/", {username: username})).data)
+        //console.log((await axios.post("http://127.0.0.1:8080/", {username: username})).data)
         changechats((await axios.post("http://127.0.0.1:8080/", {username: username})).data) ;
         console.log("Done") ;
       }
